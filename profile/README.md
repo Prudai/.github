@@ -1,47 +1,56 @@
-# PrudAI
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.png">
+  <img src="assets/banner-light.png" alt="Prudai: software and AI agents for regulated professional work. LEO, VERA, ZIA, BEVER, IRMA, MAIA and ORDO." width="100%">
+</picture>
 
-**Agentic AI for legal, healthcare, and construction professionals.**
-EU-pinned, Dutch-built, accountability-first.
-
-[prudai.com](https://prudai.com) · [docs.prudai.com](https://docs.prudai.com) · [trust.prudai.com](https://trust.prudai.com) · [legal.prudai.com](https://legal.prudai.com) · [status.prudai.com](https://status.prudai.com)
-
----
+Prudai builds software and AI agents for professionals in the Netherlands whose work is bound by law, standards and professional rules: lawyers, construction quality assurers, care organisations, municipalities and compliance teams.
 
 ## Products
 
-| Product | Domain | Audience | Wikidata |
-|---|---|---|---|
-| **LEO** — Lex Explanata Oraculo | [leo.prudai.com](https://leo.prudai.com) | Legal professionals | [Q139906960](https://www.wikidata.org/wiki/Q139906960) |
-| **VERA** | [vera.prudai.com](https://vera.prudai.com) | Construction (Bbl / Wkb compliance) | [Q139906961](https://www.wikidata.org/wiki/Q139906961) |
-| **ZIA** | [zia.prudai.com](https://zia.prudai.com) | Healthcare professionals | [Q139906962](https://www.wikidata.org/wiki/Q139906962) |
+| Product | For | Link |
+|---|---|---|
+| **LEO** | Legal AI for law firms and in-house counsel | [leo.prudai.com](https://leo.prudai.com) |
+| **VERA** | Construction: Bbl and Wkb compliance checks | [prudai.com/vera](https://prudai.com/vera) |
+| **ZIA** | Care and the social domain | [prudai.com/zia](https://prudai.com/zia) |
+| **BEVER** | Municipalities and public decision-making | [prudai.com/bever](https://prudai.com/bever) |
+| **IRMA** | GRC and ISMS for ISO 27001, BIO2 and NEN 7510 | [prudai.com/irma](https://prudai.com/irma) |
+| **MAIA** | Management information from all your data | [prudai.com/maia](https://prudai.com/maia) |
+| **ORDO** | Practice management and document management for law firms | [prudai.com/ordo](https://prudai.com/ordo) |
 
-LEO runs at [app.prudai.com](https://app.prudai.com).
+Customers sign in at [app.prudai.com](https://app.prudai.com).
 
-## Why PrudAI
+## How we work
 
-- **EU data residency by default** — Azure OpenAI (Sweden Central) and Vertex AI (EU regions). No US-bound prompt data unless you ask.
-- **Citations or it didn't happen** — every legal/professional answer is backed by retrieved source documents; we surface them in the UI, never hidden.
-- **Built for regulated work** — DPA, subprocessor list, and ISMS-derived controls published at [trust.prudai.com](https://trust.prudai.com).
-- **B-Corp pending** — accountability isn't a marketing line, it's a governance commitment.
+- **Sources you can check.** LEO, VERA, ZIA, BEVER and IRMA work from one shared registry of more than 150 validated knowledge sources. The public ones are listed at [prudai.com/kennisbronnen](https://prudai.com/kennisbronnen).
+- **Citations are checked, not trusted.** In LEO's chat, a server-side check confirms that every cited ruling (ECLI) was actually retrieved in the conversation. If it cannot be retrieved, the answer is marked as unverified.
+- **People approve the plan.** A LEO workflow first proposes a plan; in most workflows LEO then waits for a person to approve, adjust or stop it before the specialist agents start.
+- **Own infrastructure.** Customer data is stored on our own servers in EU data centres (Germany and Finland), not with a hyperscaler. AI inference runs through Google Cloud Vertex AI and Microsoft Azure OpenAI; chat requests use their EU endpoints. The providers do not use prompts or outputs to train models.
+- **Certified.** Prudai is certified to ISO/IEC 27001:2022 and NEN 7510-1:2024 (Brand Compliance, RvA-accredited; certificates NL 3143.1.1 and NL 3144.1.1, valid until 29 September 2029).
 
-## What we open-source
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/certified-dark.png">
+  <img src="assets/certified-light.png" alt="GDPR, ISO 27001 and NEN 7510 icons. Certified: ISO/IEC 27001:2022 and NEN 7510-1:2024." width="480">
+</picture>
 
-Most of PrudAI's code is private (product code, infra, customer-touching surfaces). A small set of building blocks is public on npm under [`@prudai`](https://www.npmjs.com/org/prudai):
+## Public repositories
 
-- **[echr-extractor](https://github.com/Prudai/echr-extractor)** — TypeScript port of the academic `echr-extractor`. Pulls ECHR case-law metadata, full text, and citation networks from HUDOC. Apache-2.0.
-- **[marketing-analytics](https://github.com/Prudai/marketing-analytics)** — Shared GA4 + GlitchTip + consent (vanilla-cookieconsent v3) bundle used across our marketing sites. GDPR-first.
+Most of our code is private. These building blocks are public:
 
-If you build legal-tech tooling on top of either, we'd love to hear about it.
+| Repository | What it does | |
+|---|---|---|
+| [rechtspraak-mcp](https://github.com/Prudai/rechtspraak-mcp) | MCP server for Dutch case law: search and fetch rulings by ECLI via Rechtspraak Open Data and the LiDO citation graph. No API key. | [![npm](https://img.shields.io/npm/v/rechtspraak-mcp?label=npm)](https://www.npmjs.com/package/rechtspraak-mcp) [![license](https://img.shields.io/github/license/Prudai/rechtspraak-mcp)](https://github.com/Prudai/rechtspraak-mcp/blob/main/LICENSE) |
+| [echr-extractor](https://github.com/Prudai/echr-extractor) | TypeScript library and CLI for ECHR case law from HUDOC: metadata, full text, citation networks and judgment sections. | [![npm](https://img.shields.io/npm/v/@prudai/echr-extractor?label=npm)](https://www.npmjs.com/package/@prudai/echr-extractor) [![license](https://img.shields.io/github/license/Prudai/echr-extractor)](https://github.com/Prudai/echr-extractor/blob/main/LICENSE) |
+| [skeptic-audit](https://github.com/Prudai/skeptic-audit) | An independent second agent that audits a coding agent's change against an 8-point evidence checklist before you ship it. | [![license](https://img.shields.io/github/license/Prudai/skeptic-audit)](https://github.com/Prudai/skeptic-audit/blob/main/LICENSE) |
+| [marketing-analytics](https://github.com/Prudai/marketing-analytics) | Shared analytics, cookie consent and error tracking for the Prudai websites, installed per site from a git tag. | [![tag](https://img.shields.io/github/v/tag/Prudai/marketing-analytics?label=tag)](https://github.com/Prudai/marketing-analytics/tags) |
 
-## Identity
+## Links
 
-- **Legal entity:** PrudAI B.V., Enschede, Netherlands
-- **Wikidata:** [Q139906958](https://www.wikidata.org/wiki/Q139906958)
-- **Contact:** [info@prudai.com](mailto:info@prudai.com)
-- **Status:** [status.prudai.com](https://status.prudai.com)
-- **Trust & security:** [trust.prudai.com](https://trust.prudai.com)
-- **Legal & DPA:** [legal.prudai.com](https://legal.prudai.com)
+[Website](https://prudai.com) · [Docs](https://docs.prudai.com) · [Trust Center](https://trust.prudai.com) · [Legal](https://legal.prudai.com) · [Status](https://status.prudai.com) · [PrudentBench](https://prudai.com/prudentbench) · [Prudai Marketplace](https://github.com/Prudai-Marketplace)
 
-## Contributing
+## Security
 
-External PRs are welcome on our public repos. For each repo, see its `README.md` and `CONTRIBUTING.md` (where present) for scope, code style, and the DCO/CLA situation. Security issues: please email **security@prudai.com** rather than opening a public issue.
+Please report vulnerabilities to **[security@prudai.com](mailto:security@prudai.com)**, not in a public issue. See [SECURITY.md](https://github.com/Prudai/.github/blob/main/SECURITY.md) and our [security.txt](https://app.prudai.com/.well-known/security.txt).
+
+## Company
+
+Prudai B.V. · Enschede, the Netherlands · KvK 99876868 · [info@prudai.com](mailto:info@prudai.com) · Wikidata [Q139906958](https://www.wikidata.org/wiki/Q139906958)
